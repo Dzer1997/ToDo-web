@@ -46,9 +46,13 @@ const handleAddTask = async () => {
 console.log("Sender task til backend:", handleAddTask);
 
 const handleDeleteTask = async (taskId) => {
-  await deleteTask(taskId);
-  setTasks(tasks.filter(task => task.id !== taskId))
-
+  try {
+    await deleteTask(taskId); 
+    
+    setTasks(prevTasks => prevTasks.filter(task => task && task.id !== taskId))
+  } catch (error) {
+    console.error("Fejl ved sletning af task:", error);
+  }
 }
 
 const handleUpdateTask = async (taskId,updatetFields) => {
@@ -57,25 +61,31 @@ const handleUpdateTask = async (taskId,updatetFields) => {
 }
 
   return (
-    <div>
+    <div className='main-container'>
         <TaskForm
           newTaskTitle={newTaskTitle}
           setNewTaskTitle={setNewTaskTitle}
+
           newTaskDescription={newTaskDescription}
           setNewTaskDescription={setNewTaskDescription}
+
           newTaskDeadline={newTaskDeadline}
           setNewTaskDeadline={setNewTaskDeadline}
+
           newTaskCategory={newTaskCategory}
           setNewTaskCategory={setNewTaskCategory}
+
           newTaskStatus={newTaskStatus}
           setNewTaskStatus={setNewTaskStatus}
+          
           handleAddTask={handleAddTask}
-          handleDeleteTask={handleDeleteTask}
-          handleUpdateTask={handleUpdateTask}
-        />
-        <TaskList tasks={tasks}></TaskList>
+        /> 
+        <div>
+          <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask} handleUpdateTask={handleUpdateTask} ></TaskList>
+        </div>
     </div>
   )
 }
+
 
 export default MainPage

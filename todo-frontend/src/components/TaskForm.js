@@ -16,17 +16,16 @@ const TaskForm = ({
 }) => {
   return (
     <div>
-      <input type="text" value={newTaskTitle} onChange={e => setNewTaskTitle(e.target.value)} />
-        <input type="text" value={newTaskDescription} onChange={e => setNewTaskDescription(e.target.value)} />
-        <input type="date" value={newTaskDeadline} onChange={e => setNewTaskDeadline(e.target.value)}/>
+      <input type="text" placeholder='Test' className='text-area' value={newTaskTitle} onChange={e => setNewTaskTitle(e.target.value)} />
+        <input type="text" placeholder='Test' className='text-area' value={newTaskDescription} onChange={e => setNewTaskDescription(e.target.value)} />
+        <input type="date" placeholder='Test' className='date-select' value={newTaskDeadline} onChange={e => setNewTaskDeadline(e.target.value)}/>
         <CategorySelect  value={newTaskCategory} onChange={setNewTaskCategory} />
-        <select value={newTaskStatus} onChange={e => setNewTaskStatus(e.target.value)}>
+        <select className='select-btn' value={newTaskStatus} onChange={e => setNewTaskStatus(e.target.value)}>
           <option value="">Vælg status</option>
           <option value="todo">To Do</option>
-          <option value="in progress">In Progress</option>
           <option value="done">Done</option>
         </select>
-        <button onClick={handleAddTask}>Add Task</button>
+        <button className='primary-btn' onClick={handleAddTask}>Add Task</button>
     </div>
   )
 }

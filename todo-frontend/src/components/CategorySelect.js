@@ -28,8 +28,8 @@ const CategorySelect = ({value, onChange}) => {
           <option key={cat.id} value={cat.id}>{cat.name}</option>
         ))}
       </select>
-      <input type="text" value={newCategory} onChange={e => setNewCategory(e.target.value)}/>
-      <button onClick={handleAddCategory}>Tilføj kategori</button>
+      <input className='text-area' type="text" placeholder='Test' value={newCategory} onChange={e => setNewCategory(e.target.value)}/>
+      <button className='primary-btn' onClick={handleAddCategory}>Tilføj kategori</button>
     </div>
   )
 }
