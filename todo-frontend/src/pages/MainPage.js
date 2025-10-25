@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import {  getAllTask, addTask, deleteTask, updateTask } from '../services/api'
+import { GoPlus } from "react-icons/go";
 
 const MainPage = () => {
 const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -61,8 +62,21 @@ const handleUpdateTask = async (taskId,updatetFields) => {
 }
 
   return (
-    <div className='main-container'>
-        <TaskForm
+    <div className='min-h-screen flex items-center justify-center'>
+      <div className='center-box'>
+        <div className='add-box'>
+            <button className="flex items-center justify-center w-full h-full text-gray-700 hover:bg-gray-100 rounded">
+              <GoPlus />
+            </button>
+        </div>
+      </div>
+        
+
+
+
+
+
+        {/* <TaskForm
           newTaskTitle={newTaskTitle}
           setNewTaskTitle={setNewTaskTitle}
 
@@ -82,7 +96,7 @@ const handleUpdateTask = async (taskId,updatetFields) => {
         /> 
         <div>
           <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask} handleUpdateTask={handleUpdateTask} ></TaskList>
-        </div>
+        </div> */}
     </div>
   )
 }
